@@ -4,11 +4,10 @@ import {AccountService} from "../_services/account.service";
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 
 @Component({
-  selector: 'app-nav',
-  standalone: true,
-  imports: [FormsModule, BsDropdownModule],
-  templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+    selector: 'app-nav',
+    imports: [FormsModule, BsDropdownModule],
+    templateUrl: './nav.component.html',
+    styleUrl: './nav.component.css'
 })
 export class NavComponent {
   @Input() title!: string;

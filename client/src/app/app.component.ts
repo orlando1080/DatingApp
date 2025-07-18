@@ -5,11 +5,10 @@ import { IUser } from './_models/user.interface';
 import { HomeComponent } from './home/home.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [NavComponent, HomeComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    imports: [NavComponent, HomeComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   title: string = 'Dating App';
