@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../../core/services/account.service';
 import { LoginCredentials } from '../../types/User';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -17,10 +17,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class Nav {
   protected credentials = {} as LoginCredentials;
   protected accountService: AccountService = inject(AccountService);
+  private router: Router = inject(Router);
 
   login(): void {
     this.accountService.login(this.credentials).subscribe({
       next: (response) => {
+        this.router.navigateByUrl('/members');
         console.log(response)
       },
       error: (err: Error) => {
@@ -39,6 +41,4 @@ export class Nav {
       password: ''
     };
   }
-
-  protected readonly menubar = menubar;
 }
