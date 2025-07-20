@@ -2,11 +2,14 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../../core/services/account.service';
 import { LoginCredentials } from '../../types/User';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './nav.html',
   styleUrl: './nav.css'
@@ -36,4 +39,6 @@ export class Nav {
       password: ''
     };
   }
+
+  protected readonly menubar = menubar;
 }

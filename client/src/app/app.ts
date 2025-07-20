@@ -1,21 +1,20 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Nav } from '../layout/nav/nav';
-import { lastValueFrom } from 'rxjs';
 import { User } from '../types/User';
 import { AccountService } from '../core/services/account.service';
-import { Home } from '../features/home/home';
 
 @Component({
   selector: 'app-root',
-  imports: [ RouterOutlet, Nav, Home ],
+  imports: [ RouterOutlet, Nav],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App implements OnInit {
   protected members = signal<User[]>([]);
   protected title: string = 'Dating App';
+  protected router: Router = inject(Router);
   private http: HttpClient = inject(HttpClient)
   private destroyRef = inject(DestroyRef);
   private accountService: AccountService = inject(AccountService);
