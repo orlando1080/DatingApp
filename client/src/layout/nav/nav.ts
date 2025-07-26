@@ -25,7 +25,7 @@ export class Nav {
     this.accountService.login(this.credentials).subscribe({
       next: (response) => {
         this.router.navigateByUrl('/members');
-        const displayName = response.displayName.charAt(0).toUpperCase() + response.displayName.slice(1);
+        const displayName: string = response.displayName.charAt(0).toUpperCase() + response.displayName.slice(1);
         this.toastService.success(`${displayName} you have logged in successfully!`);
         console.log(response)
       },
