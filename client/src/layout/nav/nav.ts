@@ -21,7 +21,7 @@ export class Nav {
   private router: Router = inject(Router);
   private toastService: ToastService = inject(ToastService);
 
-  login(): void {
+  protected login(): void {
     this.accountService.login(this.credentials).subscribe({
       next: (response) => {
         this.router.navigateByUrl('/members');
@@ -39,7 +39,7 @@ export class Nav {
     });
   }
 
-  logout(): void {
+  protected logout(): void {
     this.accountService.logout();
     this.credentials = {
       email: '',

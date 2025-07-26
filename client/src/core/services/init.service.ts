@@ -11,6 +11,7 @@ export class InitService {
 
   init(): Observable<null> {
     const userString: string | null = localStorage.getItem('currentUser');
+
     if (!userString) {
       return of(null);
     }
