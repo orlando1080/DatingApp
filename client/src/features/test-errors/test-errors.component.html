@@ -1,7 +1,7 @@
 <div class="flex justify-center gap-3 pt-10">
-  <button (click)="get404Error()">404 Error</button>
-  <button (click)="get400Error()">400 Error</button>
-  <button (click)="get401Error()">401 Error</button>
-  <button (click)="get500Error()">500 Error</button>
-  <button (click)="get400ValidationError()">400 Validation Error</button>
+  <button class="btn btn-neutral" (click)="get404Error()">404 Error Not found</button>
+  <button class="btn btn-accent" (click)="get400Error()">400 Error Bad request</button>
+  <button class="btn btn-secondary" (click)="get401Error()">401 Error Auth</button>
+  <button class="btn btn-success" (click)="get500Error()">500 Error Server</button>
+  <button class="btn btn-info" (click)="get400ValidationError()">400 Validation Error</button>
 </div>
