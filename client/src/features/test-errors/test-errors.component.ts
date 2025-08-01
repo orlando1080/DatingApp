@@ -13,7 +13,7 @@ export class TestErrors {
   private readonly http: HttpClient = inject(HttpClient);
   
   get404Error() {
-    this.http.get(`${this.baseUrl}/buggy/not-found`).subscribe({
+    this.http.get(`${this.baseUrl}buggy/not-found`).subscribe({
       next: res => console.log(res),
       error: err => console.log(err),
       complete: () => console.log('complete')
@@ -21,7 +21,7 @@ export class TestErrors {
   }
   
   get400Error() {
-    this.http.get(`${this.baseUrl}/buggy/bad-request`).subscribe({
+    this.http.get(`${this.baseUrl}buggy/bad-request`).subscribe({
       next: res => console.log(res),
       error: err => console.log(err),
       complete: () => console.log('complete')
@@ -29,7 +29,7 @@ export class TestErrors {
   }
   
   get401Error() {
-    this.http.post(`${this.baseUrl}/buggy/auth`, {}).subscribe({
+    this.http.post(`${this.baseUrl}buggy/auth`, {}).subscribe({
       next: res => console.log(res),
       error: err => console.log(err),
       complete: () => console.log('complete')
@@ -37,7 +37,7 @@ export class TestErrors {
   }
   
   get500Error() {
-    this.http.get(`${this.baseUrl}/buggy/server-error`).subscribe({
+    this.http.get(`${this.baseUrl}buggy/server-error`).subscribe({
       next: res => console.log(res),
       error: err => console.log(err),
       complete: () => console.log('complete')
@@ -45,7 +45,7 @@ export class TestErrors {
   }
 
   get400ValidationError() {
-    this.http.post(`${this.baseUrl}/buggy/register`, {}).subscribe({
+    this.http.post(`${this.baseUrl}buggy/register`, {}).subscribe({
       next: res => console.log(res),
       error: err => console.log(err),
       complete: () => console.log('complete')
