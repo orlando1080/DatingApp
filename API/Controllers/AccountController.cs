@@ -14,12 +14,6 @@ public class AccountController(DataContext context, ITokenService tokenService) 
     [HttpPost("register")] // account/register
     public async Task<ActionResult<MemberDto>> Register(RegisterDto registerDto)
     {
-        if (string.IsNullOrEmpty(registerDto.Email) || string.IsNullOrEmpty(registerDto.Password) ||
-            string.IsNullOrEmpty(registerDto.DisplayName))
-        {
-            return BadRequest("All Fields are required to register");
-        }
-
         if (await UserExists(registerDto.Email))
         {
             return BadRequest("Email already exists");
