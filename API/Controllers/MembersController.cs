@@ -10,17 +10,17 @@ public class MembersController(DataContext dataContext) : BaseApiController
 {
     [AllowAnonymous]
     [HttpGet]
-    public async Task<ActionResult<List<AppMember>>> GetUsers()
+    public async Task<ActionResult<List<AppUser>>> GetUsers()
     {
-        return await dataContext.Members.ToListAsync();
+        return await dataContext.Users.ToListAsync();
     }
 
     [Authorize]
     [HttpGet("{id:Guid}")]
-    public async Task<ActionResult<AppMember>> GetUser(Guid id)
+    public async Task<ActionResult<AppUser>> GetUser(Guid id)
     {
-        AppMember? member = await dataContext.Members.FindAsync(id);
+        AppUser? user = await dataContext.Users.FindAsync(id);
 
-        return member is null ? NotFound() : member;
+        return user is null ? NotFound() : user;
     }
 }

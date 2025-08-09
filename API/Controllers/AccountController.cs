@@ -12,7 +12,7 @@ namespace API.Controllers;
 public class AccountController(DataContext context, ITokenService tokenService) : BaseApiController
 {
     [HttpPost("register")] // account/register
-    public async Task<ActionResult<MemberDto>> Register(RegisterDto registerDto)
+    public async Task<ActionResult<AppUserDto>> Register(RegisterDto registerDto)
     {
         if (await UserExists(registerDto.Email))
         {
@@ -21,7 +21,7 @@ public class AccountController(DataContext context, ITokenService tokenService) 
 
         using HMACSHA512 hmac = new();
 
-        AppMember member = new()
+        AppUser user = new()
         {
             DisplayName = registerDto.DisplayName.ToLower(),
             Email = registerDto.Email.ToLower(),
@@ -30,47 +30,47 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         };
 
 
-        context.Members.Add(member);
+        context.Users.Add(user);
         await context.SaveChangesAsync();
 
-        return new MemberDto
+        return new AppUserDto
         {
-            Id = member.Id,
-            DisplayName = member.DisplayName,
-            Email = member.Email,
-            ImageUrl = member.ImageUrl,
-            Token = tokenService.CreateToken(member)
+            Id = user.Id.ToString(),
+            DisplayName = user.DisplayName,
+            Email = user.Email,
+            ImageUrl = user.ImageUrl,
+            Token = tokenService.CreateToken(user)
         };
     }
 
     [HttpPost("login")] // account/login
-    public async Task<ActionResult<MemberDto>> Login(LoginDto loginDto)
+    public async Task<ActionResult<AppUserDto>> Login(LoginDto loginDto)
     {
-        AppMember? member = await context.Members.FirstOrDefaultAsync(x => x.Email.ToLower() == loginDto.Email.ToLower());
+        AppUser? user = await context.Users.FirstOrDefaultAsync(x => x.Email.ToLower() == loginDto.Email.ToLower());
 
-        if (member is null)
+        if (user is null)
         {
             return Unauthorized("Invalid email");
         }
 
-        using HMACSHA512 hmac = new(member.PasswordSalt);
+        using HMACSHA512 hmac = new(user.PasswordSalt);
 
         var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
 
-        if (computedHash.Where((t, i) => t != member.PasswordHash[i]).Any()) return Unauthorized("Invalid password");
+        if (computedHash.Where((t, i) => t != user.PasswordHash[i]).Any()) return Unauthorized("Invalid password");
 
-        return Ok(new MemberDto
+        return Ok(new AppUserDto
         {
-            Id = member.Id,
-            DisplayName = member.DisplayName,
-            Email = member.Email,
-            ImageUrl = member.ImageUrl,
-            Token = tokenService.CreateToken(member)
+            Id = user.Id.ToString(),
+            DisplayName = user.DisplayName,
+            Email = user.Email,
+            ImageUrl = user.ImageUrl,
+            Token = tokenService.CreateToken(user)
         });
     }
 
     private async Task<bool> UserExists(string email)
     {
-        return await context.Members.AnyAsync(x => x.Email.ToLower() == email.ToLower());
+        return await context.Users.AnyAsync(x => x.Email.ToLower() == email.ToLower());
     }
 }

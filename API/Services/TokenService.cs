@@ -9,7 +9,7 @@ namespace API.Services;
 
 public class TokenService(IConfiguration config) : ITokenService
 {
-    public string CreateToken(AppMember member)
+    public string CreateToken(AppUser user)
     {
         var tokenKey = config.GetValue<string>("TokenKey") ?? throw new Exception("Token Key not found");
 
@@ -19,7 +19,7 @@ public class TokenService(IConfiguration config) : ITokenService
 
         List<Claim> claims =
         [
-            new(ClaimTypes.NameIdentifier, member.DisplayName)
+            new(ClaimTypes.NameIdentifier, user.DisplayName)
         ];
 
         SigningCredentials credentials = new(key, SecurityAlgorithms.HmacSha256);
