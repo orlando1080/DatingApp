@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace API.Entities;
 
 public class Member
 {
-    public Guid? Id { get; set; }
+    public string Id { get; set; } = null!;
 
     public required string Gender { get; set; }
 
@@ -25,8 +26,10 @@ public class Member
     public string? ImageUrl { get; set; }
 
     // Navigation properties
+    [JsonIgnore]
     public List<Photo> Photos { get; set; } = [];
 
+    [JsonIgnore]
     [ForeignKey(nameof(Id))]
     public AppUser User { get; set; } = null!;
 }

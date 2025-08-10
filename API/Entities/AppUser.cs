@@ -4,7 +4,7 @@ namespace API.Entities;
 
 public class AppUser
 {
-    public Guid Id { get; init; } = Guid.NewGuid();
+    public string Id { get; init; } = null!;
 
     public required string Email { get; set; }
 

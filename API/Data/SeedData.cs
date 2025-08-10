@@ -23,10 +23,10 @@ public class SeedData
             return;
         }
 
-        using HMACSHA512 hmac = new();
-
         foreach (SeedUserDto user in users)
         {
+            using HMACSHA512 hmac = new();
+
             AppUser appUser = new()
             {
                 Id = user.Id,
@@ -53,7 +53,7 @@ public class SeedData
             appUser.Member.Photos.Add(new Photo
             {
                 Url = user.ImageUrl!,
-                UserId = user.Id,
+                MemberId = user.Id,
             });
 
             context.Users.Add(appUser);
