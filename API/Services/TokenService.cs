@@ -9,7 +9,7 @@ namespace API.Services;
 
 public class TokenService(IConfiguration config) : ITokenService
 {
-    public string CreateToken(AppUser user)
+    public string CreateToken(User user)
     {
         var tokenKey = config.GetValue<string>("TokenKey") ?? throw new Exception("Token Key not found");
 

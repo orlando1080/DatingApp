@@ -25,11 +25,11 @@ public class Member
 
     public string? ImageUrl { get; set; }
 
-    // Navigation properties
-    [JsonIgnore]
-    public List<Photo> Photos { get; set; } = [];
+    /* Navigation properties one-to-many relationship. One member can have many photos.
+     the type dictates the relationship*/
+    [JsonIgnore] public List<Photo> Photos { get; set; } = [];
 
-    [JsonIgnore]
-    [ForeignKey(nameof(Id))]
-    public AppUser User { get; set; } = null!;
+
+// One-to-one relationship with AppUser
+    [JsonIgnore] [ForeignKey(nameof(Id))] public User User { get; set; } = null!;
 }

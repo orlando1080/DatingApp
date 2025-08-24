@@ -6,17 +6,31 @@ namespace API.Data;
 
 public class MemberRepository(DataContext context) : IMemberRepository
 {
-    public void Update(Member member) => context.Entry(member).State = EntityState.Modified;
+    public void Update(Member member)
+    {
+        context.Entry(member).State = EntityState.Modified;
+    }
 
-    public async Task<bool> SaveAllAsync() => await context.SaveChangesAsync() > 0;
+    public async Task<bool> SaveAllAsync()
+    {
+        return await context.SaveChangesAsync() > 0;
+    }
 
-    public async Task<IReadOnlyList<Member>> GetMembersAsync() => await context.Members.ToListAsync();
+    public async Task<IReadOnlyList<Member>> GetMembersAsync()
+    {
+        return await context.Members.ToListAsync();
+    }
 
-    public async Task<Member?> GetMemberByIdAsync(string id) => await context.Members.FindAsync(id);
+    public async Task<Member?> GetMemberByIdAsync(string id)
+    {
+        return await context.Members.FindAsync(id);
+    }
 
-    public async Task<IReadOnlyList<Photo>> GetPhotosForMemberAsync(string memberId) =>
-        await context.Members
+    public async Task<IReadOnlyList<Photo>> GetPhotosForMemberAsync(string memberId)
+    {
+        return await context.Members
             .Where(x => x.Id == memberId)
             .SelectMany(x => x.Photos)
             .ToListAsync();
+    }
 }

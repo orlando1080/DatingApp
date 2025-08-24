@@ -10,9 +10,8 @@ public class Photo
 
     public string? PublicId { get; set; }
 
-    // Navigation properties
-    [JsonIgnore]
-    public Member Member { get; set; } = null!;
+    // Navigation properties one-to-many relationship with a member. Many photos can belong to a single member
+    [JsonIgnore] public Member Member { get; set; } = null!;
 
     public string MemberId { get; set; } = null!;
 }

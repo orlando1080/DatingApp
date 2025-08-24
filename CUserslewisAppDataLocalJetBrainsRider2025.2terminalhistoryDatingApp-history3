@@ -1,0 +1,272 @@
+codecrafters test 
+git config --global user.email "lewis.sewell@gmail.com"
+git config --global user.name "lewis Sewell"
+codecrafters test 
+codecrafters test
+ng version
+dir
+ls
+cd ..
+ls
+cd ..
+ls
+cd ..
+ls
+dir
+pwd
+explorere.exe .
+explorer.exe .
+ls
+dotnet --info
+wget https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb # Clean up the .deb file
+sudo apt update
+sudo apt-get install -y dotnet-sdk-9.0
+dotnet --info
+sudo apt remove --purge 'dotnet*' 'aspnetcore*' 'netstandard*' -y
+sudo apt autoremove -y
+sudo snap remove --purge dotnet
+sudo snap remove --purge dotnet-sdk
+wget https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+sudo apt update
+apt upgrade
+sudo apt-get install -y dotnet-sdk-9.0
+sudo apt remove --purge 'dotnet*' 'aspnetcore*' 'netstandard*' -y
+sudo apt autoremove -y
+sudo snap remove --purge dotnet
+sudo add-apt-repository ppa:dotnet/backports -y
+sudo apt update
+sudo apt install -y dotnet-sdk-9.0
+cd Dev/DatingApp/client/
+dotnet --info
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+nvm install 22
+nvm use 22
+nvm alias default 22
+node -v
+npm -v
+ng version
+sudo apt update
+sudo apt install git -y
+npm install -g @angular/cli
+ng --version
+npm install -g npm @11.5.1
+npm install -g npm@11.5.1
+ls
+cd dev
+ls
+cd dev
+pwd
+ls
+cd Dev
+cd ..
+cd dev
+cd Dev/
+ls
+cd DatingApp/
+ls
+cd ap
+cd API/
+dotnet watch
+git status
+ls
+cd api && dotnet watch
+cd API && dotnet watch
+dotnet watch
+cd API
+dotnet watch
+git pull
+git commit -am "fix(errors): fix incorrect codes being returned"; git push
+git pull
+cd API/ && dotnet watch
+dotnet watch
+dotnet ef migrations add MemberEntityAdded
+dotnet ef --help
+dotnet watch
+cd client/ && ng serve -o
+npm start
+cd client
+ng g c not-found -d
+ng g c shared/not-found -d
+ng g c shared/not-found
+ng g c shared/server-error
+dotnet ef migrations add PhotoEntityUpdated
+dotnet ef migrations --help
+dotnet ef migrations remove
+dotnet ef migrations remove --help
+dotnet ef migrations --help
+dotnet ef migrations remove
+dotnet build
+dotnet ef migrations remove
+dotnet ef migrations add PhotoEntityUpdated
+dotnet build
+dotnet ef migrations add PhotoEntityUpdated
+dotnet ef database --help
+dotnet ef database update
+dotnet ef migrations remove
+dotnet ef migrations add PhotoEntityUpdated
+dotnet ef migrations remove
+dotnet ef migrations add PhotoEntityUpdated
+dotnet ef database update
+dotnet ef migrations remove
+dotnet ef database update
+dotnet ef migrations --help
+git add .
+git stash
+dotnet ef database update
+dotnet ef database update 20250720160909_AddBackDatabaseTable
+git stash pop
+git stash list
+git stash pop
+dotnet ef migrations list
+dotnet ef migrations add AddSeedData
+dotnet ef database update
+dotnet ef migrations list
+dotnet ef database update
+dotnet ef migrations list
+dotnet ef migrations add FixCreatedColumnName
+dotnet ef database update
+cd API/ && dotnet watch
+dotnet ef database update
+cd client/ && ng serve -o
+dotnet dev-certs https --trust
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
+cd API/
+dotnet ef database drop
+rm -rf Data/Migrations/*
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+dotnet ef migrations list
+dotnet ef database drop
+rm -rf Data/Migrations/*
+dotnet ef migrations add Data/Migrations/InitialCreation
+dotnet ef migrations add Data/InitialCreation
+dotnet ef Data/migrations add InitialCreation
+dotnet ef migrations add InitialCreation
+dotnet ef database update
+find . -name "*.db" -type f
+rm "./C:\\Users\\lewis\\Code\\dating.db"
+dotnet ef database update
+rm -f *.db*
+dotnet ef database drop --force
+dotnet ef database update
+dotnet watch
+cd client/ && ng server -o
+cd client/ && ng serve -o
+ng serve -o
+cd API/ && dotnet watch
+dotnet dev-certs https --trust
+dotnet watch
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
+cd client/ && ng server -o
+ng serve -o
+cd API/ && dotnet watch
+dotnet clean && dotnet restore && dotnet build
+cd client/ && ng serve -o
+git add .
+git commit -m "fix(database): fix out of sync database" && git push
+cd client/ && ng serve -o
+cd API/ && dotnet watch
+dotnet clean && dotnet restore && dotnet build
+cd client/ && ng serve -o
+cd API/ && dotnet watch
+dotnet ef database drop --force
+dotnet ef database update
+dotnet ef database drop --force
+ln -s /mnt/c/users/lewis/code/dating.db dating.db 
+dotnet clean && dotnet restore && dotnet build
+dotnet nuget locals all --clear
+dotnet clean && dotnet restore && dotnet build
+dotnet restore --verbosity detailed
+dotnet clean && dotnet restore && dotnet build
+dotnet nuget locals all --clear
+dotnet clean && dotnet restore && dotnet build
+dotnet nuget locals all --clear
+dotnet clean && dotnet restore && dotnet build
+rm -r bin/ obj/
+cd API/
+rm -r bin/ obj/
+dotnet restore
+dotnet build
+dotnet watch
+cd API/
+ln -s /mnt/c/users/lewis/dating.db datingdb
+rm datingdb
+ln -s /mnt/c/users/lewis/dating.db dating.db
+cd API/ && dotnet watch
+dotnet watch
+cd API/ && dotnet watch
+dotnet watch
+dotnet clean && dotnet restore && dotnet build
+cd API/
+rm -rf /bin /obj
+rm -r bin/ obj/
+dotnet clean && dotnet restore && dotnet build
+dotnet watch
+cd API/ && dotnet watch
+dotnet clean && dotnet restore && dotnet build
+rm -r bin/ obj/
+dotnet clean && dotnet restore && dotnet build
+dotnet watch
+rm -r bin/ obj/
+dotnet clean && dotnet restore && dotnet build
+dotnet watch
+cd API/ && dotnet watch
+dotnet clean && dotnet restore && dotnet build
+rm -r bin/ obj/
+dotnet clean && dotnet restore && dotnet build
+cd client/ && ng serve -o
+cd API/ && dotnet watch
+dotnet watch --list
+rm -r bin/ obj/
+cd client/ && ng serve -o
+dotnet restore && dotnet build
+cd API/
+dotnet restore && dotnet build
+dotnet watch
+clear
+dotnet ef database drop
+ls -l
+dotnet ef database drop
+rm dating.db 
+ln -s /mnt/c/users/lewis/code/dating.db dating.db
+dotnet ef database drop
+dotnet watch
+dotnet ef migrations add UpdateMemberId
+dotnet build
+dotnet ef migrations add UpdateMemberId
+dotnet watch
+cd API/ && dotnet watch
+dotnet watch
+cd API/ && dotnet watch
+dotnet ef migrations remove
+dotnet ef migrations add UpdatePhotoId
+dotnet watch
+dotnet ef migrations remove
+dotnet ef migrations add UpdatePhotoIdAgain
+dotnet watch
+dotnet ef migrations add UpdatePhotoEntity
+dotnet watch
+git add .
+git commit -m "feat(repository): end of section 8" && git push
+cd client/ && npm start
+cd API/ && dotnet watch
+dotnet watch
+cd client/ && npm start -o
+ng serve
+cd API/
+dotnet ef migrations add RenameAppUserEntity
+dotnet ef migrations remove
+cd ../client/
+ng g -help
+ng g --help
+ng g environments -d
+ng g environments
+ng g s -d
+ng g s member

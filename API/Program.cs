@@ -14,7 +14,7 @@ builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddScoped<IMemberRepository, MemberRepository>();
 
 // Configure the HTTP request pipeline.
-WebApplication app = builder.Build();
+var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
 
@@ -27,19 +27,19 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using IServiceScope scope = app.Services.CreateScope();
+using var scope = app.Services.CreateScope();
 
-IServiceProvider services = scope.ServiceProvider;
+var services = scope.ServiceProvider;
 
 try
 {
-    DataContext context = services.GetRequiredService<DataContext>();
+    var context = services.GetRequiredService<DataContext>();
     await context.Database.MigrateAsync();
     await SeedData.SeedUsers(context);
 }
 catch (Exception e)
 {
-    ILogger<Program> logger = services.GetRequiredService<ILogger<Program>>();
+    var logger = services.GetRequiredService<ILogger<Program>>();
     logger.LogError(e, "An error occured during migration");
 }
 

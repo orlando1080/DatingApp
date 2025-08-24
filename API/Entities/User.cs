@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace API.Entities;
 
-namespace API.Entities;
-
-public class AppUser
+public class User
 {
     public string Id { get; init; } = null!;
 
