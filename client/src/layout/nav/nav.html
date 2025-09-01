@@ -1,56 +1,69 @@
 <header class="p-3 w-full fixed top-0 z-50 bg-gradient-to-r from-primary to-black">
   <div class="text-base-content">
     <div class="flex align-middle items-center px-10 mx-auto gap-6">
-      <a routerLink="/" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact: true}" class="flex item-center max-h-16 border-r-white border-r-2 pr-6 gap-3">
+      <a routerLink="/" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact: true}"
+         class="flex item-center max-h-16 border-r-white border-r-2 pr-6 gap-3">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 m-auto">
-          <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+          <path fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                clip-rule="evenodd"/>
         </svg>
 
         <h3 class="text-2xl font-bold uppercase">Dating App</h3>
-        </a>
+      </a>
       <nav class="flex gap-3 my-2 uppercase text-lg text-base-content">
-        @if(accountService.currentUser(); as user) {
+        @if (accountService.currentUser(); as user) {
           <a routerLink="/members" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact: true}">Matches</a>
           <a routerLink="/lists" routerLinkActive="text-accent">Lists</a>
           <a routerLink="/messages" routerLinkActive="text-accent">Messages</a>
         }
         <a routerLink="/errors" routerLinkActive="text-accent">Errors</a>
       </nav>
+
+      @if(busyService.busyRequestCount() > 0) {
+        <div class="loading loading-spinner loading-lg"></div>
+      }
+
+      <div class="loading-spinner"></div>
+
       <div class="flex align-middle ml-auto gap-3">
-  </div>
+      </div>
       <div class="dropdown dropdown-bottom dropdown-end">
         <button tabindex="1" class="flex flex-col justify-center align-middle mr-3 gap-1
             text-primary cursor-pointer uppercase text-xs">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 flex self-center">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+               stroke="currentColor" class="size-6 flex self-center">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"/>
           </svg>
           Themes
         </button>
-        <ul tabindex="1" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+        <ul tabindex="1" class="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm">
           @for (theme of themes; track $index) {
             <li (click)="toggleTheme(theme)">
-              <a class="text-base-content">{{theme}}</a>
+              <a class="text-base-content">{{ theme }}</a>
             </li>
           }
         </ul>
       </div>
-    @if(accountService.currentUser(); as user) {
-      <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="flex items-center text-base-content text-xl gap-3 cursor-pointer">
-          <img [src]="user.imageUrl || '/user.png'" alt="user avatar" class="size-12 rounded-box md:size-20 lg:size-24"
-          >
-          <span>{{ user.displayName.charAt(0).toUpperCase() + user.displayName.slice(1) }}</span>
+      @if (accountService.currentUser(); as user) {
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="flex items-center text-base-content text-xl gap-3 cursor-pointer">
+            <img [src]="user.imageUrl || '/user.png'" alt="user avatar"
+                 class="size-12 rounded-box md:size-20 lg:size-24"
+            >
+            <span class="text-base-content">{{ user.displayName.charAt(0).toUpperCase() + user.displayName.slice(1) }}</span>
+          </div>
+          <ul tabindex="0" class="dropdown-content dropdown-end menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+            <li>
+              <a>Edit Profile</a>
+            </li>
+            <li>
+              <a (click)="logout()">Logout</a>
+            </li>
+          </ul>
         </div>
-        <ul tabindex="0" class="dropdown-content dropdown-end menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-          <li>
-            <a>Edit Profile</a>
-          </li>
-          <li>
-            <a (click)="logout()">Logout</a>
-          </li>
-        </ul>
-      </div>
-    } @else {
+      } @else {
         <form #loginForm="ngForm" (ngSubmit)="login()" class="flex item-center gap-3">
           <input [(ngModel)]="credentials.email"
                  name="email"
@@ -64,7 +77,7 @@
                  placeholder="Password">
           <button class="btn" type="submit">Login</button>
         </form>
-    }
+      }
     </div>
   </div>
 </header>

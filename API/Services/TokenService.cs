@@ -19,7 +19,7 @@ public class TokenService(IConfiguration config) : ITokenService
 
         List<Claim> claims =
         [
-            new(ClaimTypes.NameIdentifier, user.DisplayName)
+            new(ClaimTypes.NameIdentifier, user.Id)
         ];
 
         SigningCredentials credentials = new(key, SecurityAlgorithms.HmacSha256);

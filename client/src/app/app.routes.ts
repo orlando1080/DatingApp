@@ -11,6 +11,7 @@ import { ServerError } from '../shared/server-error/server-error';
 import { Profile } from '../features/members/profile/profile';
 import { Photos } from '../features/members/photos/photos';
 import { memberResolver, photoResolver } from '../features/members/member-resolver';
+import { preventUnsavedChangesGuard } from '../core/guards/prevent-unsaved-changes-guard';
 
 export const routes: Routes = [
   {path: '', component: Home},
@@ -30,7 +31,7 @@ export const routes: Routes = [
         component: MemberDetailed,
         children: [
           {path: '', redirectTo: 'profile', pathMatch: 'full'},
-          {path: 'profile', component: Profile, title: 'Profile'},
+          {path: 'profile', component: Profile, title: 'Profile', canDeactivate: [preventUnsavedChangesGuard]},
           {path: 'photos', component: Photos, title: 'Photos'},
           {path: 'messages', component: Messages, title: 'Messages'}
         ]

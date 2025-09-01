@@ -26,11 +26,18 @@ public class MemberRepository(DataContext context) : IMemberRepository
         return await context.Members.FindAsync(id);
     }
 
+    public async Task<Member?> GetMemberForUpdateAsync(string id)
+    {
+        return await context.Members
+            .Include(member => member.User)
+            .FirstOrDefaultAsync(member => member.Id == id);
+    }
+
     public async Task<IReadOnlyList<Photo>> GetPhotosForMemberAsync(string memberId)
     {
         return await context.Members
-            .Where(x => x.Id == memberId)
-            .SelectMany(x => x.Photos)
+            .Where(member => member.Id == memberId)
+            .SelectMany(member => member.Photos)
             .ToListAsync();
     }
 }

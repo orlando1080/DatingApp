@@ -1,11 +1,11 @@
 @if (member(); as member) {
   <div class="flex gap-6">
-    <div class="card bg-base-100 flex flex-col w-1/4 h-[85vh]" >
+    <div class="card bg-base-100 flex flex-col w-1/4 h-[85vh]">
       <img src="{{ member.imageUrl || 'user.png' }}" alt="" class="rounded-full mx-10 mt-3 object-cover">
       <div class="card-body">
         <div class="flex flex-col items-center">
-          <div class="flex text-2xl text-primary">{{ member.displayName }}, {{ member.dateOfBirth | age }}</div>
-          <div class="text-sm">{{ member.city }}, {{ member.country }}</div>
+          <div class="flex text-2xl text-primary">{{ memberService.member()?.displayName }}, {{ member.dateOfBirth | age }}</div>
+          <div class="text-sm">{{ memberService.member()?.city }}, {{ memberService.member()?.country }}</div>
         </div>
         <div class="divider"></div>
         <ul class="menu rounded-box w-full text-xl">
@@ -26,7 +26,14 @@
       </div>
     </div>
     <div class="card bg-base-100 w-3/4 p-6">
-      <h3 class="card-title text-3xl text-primary">{{ this.title() }}</h3>
+      <div class="flex justify-between items-center gap-3 mb-3">
+        <h3 class="card-title text-3xl text-primary">{{ this.title() }}</h3>
+        @if (isCurrentUser()) {
+          <button (click)="toggleEditMode()"
+                  class="btn btn-primary">{{ memberService.isEditMode() ? 'Cancel' : 'Edit' }}
+          </button>
+        }
+      </div>
       <div class="divider"></div>
       <router-outlet/>
     </div>
